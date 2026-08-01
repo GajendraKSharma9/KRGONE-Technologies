@@ -1,0 +1,71 @@
+            {/* Right Side: Desktop Navigation & CTA */}
+            <div className="flex items-center gap-6">
+              {/* Desktop Navigation */}
+              <div className="hidden xl:flex items-center space-x-7">
+              {navigationConfig.map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="relative group h-[80px] flex items-center"
+                  onMouseEnter={() => item.dropdown && setActiveDropdown(item.title)}
+                  onMouseLeave={() => item.dropdown && setActiveDropdown(null)}
+                >
+                  <a 
+                    href={item.href}
+                    onClick={(e) => {
+                      if (item.action === "ASSESSMENT_PORTAL") {
+                        e.preventDefault();
+                        setActiveAppView('ASSESSMENT_PORTAL');
+                        window.scrollTo(0, 0);
+                      }
+                    }}
+                    className={`flex items-center gap-1.5 text-[14px] font-medium tracking-wide transition-colors duration-250 py-2 relative ${
+                      activeDropdown === item.title ? 'text-[#c29d2f]' : 'text-slate-200 hover:text-[#c29d2f]'
+                    }`}
+                  >
+                    {item.title}
+                    {item.dropdown && (
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-250 ${activeDropdown === item.title ? 'rotate-180 text-[#c29d2f]' : 'text-slate-400 group-hover:text-[#c29d2f]'}`} />
+                    )}
+                    {/* Gold Underline Animation */}
+                    <span className={`absolute bottom-0 left-0 h-[2px] bg-[#c29d2f] transition-all duration-300 ${activeDropdown === item.title ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                  </a>
+
+                  {/* Dropdown Menu */}
+                  {item.dropdown && (
+                    <div 
+                      className={`absolute top-[80px] left-1/2 -translate-x-1/2 w-[280px] bg-[#030816] rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.5)] border border-[#c29d2f]/20 p-2 transition-all duration-250 origin-top ${
+                        activeDropdown === item.title ? 'opacity-100 translate-y-0 visible scale-100' : 'opacity-0 -translate-y-2 invisible scale-95'
+                      }`}
+                    >
+                      <div className="absolute -top-3 left-0 w-full h-4"></div> {/* Hover bridge */}
+                      <div className="px-3 py-3 mb-1 border-b border-[#c29d2f]/10">
+                        <span className="text-[#c29d2f] text-[11px] font-bold uppercase tracking-[0.15em]">{item.title}</span>
+                      </div>
+                      <div className="flex flex-col">
+                        {item.dropdown.map((dropItem, dIdx) => (
+                          <a 
+                            key={dIdx} 
+                            href="#" 
+                            className="px-3 py-2.5 text-[13.5px] text-white hover:text-[#c29d2f] hover:bg-white/5 rounded-xl transition-colors duration-200 flex items-center gap-2 group/drop"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#c29d2f]/0 group-hover/drop:bg-[#c29d2f] transition-colors"></span>
+                            {dropItem}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Right CTA */}
+            <div className="hidden xl:block bg-gradient-to-b from-[#e5c158] to-[#8a6a12] p-[2px] rounded-full shadow-[0_8px_20px_-4px_rgba(194,157,47,0.5)] hover:shadow-[0_15px_30px_-4px_rgba(194,157,47,0.7)] transition-all duration-300 hover:-translate-y-1 translate-y-[25%]">
+              <button 
+                onClick={(e) => { e.preventDefault(); setActiveAppView('ASSESSMENT_PORTAL'); window.scrollTo(0, 0); }}
+                className="flex items-center justify-center bg-gradient-to-b from-[#f3d97f] via-[#c29d2f] to-[#9c7816] text-[#030816] px-6 py-2.5 rounded-full font-bold text-[11.5px] tracking-[0.12em] uppercase transition-all duration-300 shadow-[inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-2px_6px_rgba(0,0,0,0.4)] hover:brightness-110 active:shadow-[inset_0_3px_8px_rgba(0,0,0,0.6)]"
+              >
+                Free Business Growth Assessment
+              </button>
+            </div>
+

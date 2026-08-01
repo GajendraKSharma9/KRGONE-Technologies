@@ -1,0 +1,46 @@
+        {/* Mobile Navigation Dropdown */}
+        <div 
+          className={`xl:hidden absolute top-full left-0 w-full bg-[#030816] border-b border-[#c29d2f]/20 shadow-2xl transition-all duration-300 ease-in-out origin-top overflow-hidden ${
+            isMobileMenuOpen ? 'max-h-[85vh] opacity-100 visible overflow-y-auto' : 'max-h-0 opacity-0 invisible'
+          }`}
+        >
+          <div className="px-4 py-6 flex flex-col gap-2">
+            {navigationConfig.map((item, idx) => (
+              <div key={idx} className="flex flex-col border-b border-white/5 last:border-0 pb-2 mb-2 last:pb-0 last:mb-0">
+                <button
+                  onClick={(e) => {
+                    if (item.action === "ASSESSMENT_PORTAL") {
+                      e.preventDefault();
+                      setActiveAppView('ASSESSMENT_PORTAL');
+                      window.scrollTo(0, 0);
+                      setIsMobileMenuOpen(false);
+                    } else if (item.dropdown) {
+                      setActiveDropdown(activeDropdown === item.title ? null : item.title);
+                    } else {
+                      setIsMobileMenuOpen(false);
+                    }
+                  }}
+                  className="flex items-center justify-between w-full px-2 py-3 text-[15px] font-medium text-slate-200 hover:text-[#c29d2f] transition-colors"
+                >
+                  {item.title}
+                  {item.dropdown && (
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.title ? 'rotate-180 text-[#c29d2f]' : 'text-slate-500'}`} />
+                  )}
+                </button>
+                
+                {/* Mobile Dropdown Sub-menu */}
+                {item.dropdown && (
+                  <div 
+                    className={`overflow-hidden transition-all duration-300 flex flex-col gap-1 pl-4 ${
+                      activeDropdown === item.title ? 'max-h-[500px] py-2 opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    {item.dropdown.map((dropItem, dIdx) => (
+                      <a 
+                        key={dIdx} 
+                        href="#" 
+                        className="px-2 py-2 text-[14px] text-slate-400 hover:text-[#c29d2f] transition-colors"
+                      >
+                        {dropItem}
+                      </a>
+                    ))}

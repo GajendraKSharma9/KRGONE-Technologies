@@ -1,0 +1,8 @@
+{
+  "name": "KRGONE - KRGONE Technologies",
+  "description": "A clean, modern top navigation bar for KRG ONE.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

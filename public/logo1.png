@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 150" width="650" height="150" fill="none">
+  <!-- Arrow K Emblem -->
+  <g transform="translate(15, 12)">
+    <!-- Navy vertical left stem -->
+    <rect x="12" y="10" width="22" height="106" rx="3" fill="#0B1F3A" />
+    <!-- Navy bottom diagonal leg -->
+    <path d="M 34 68 L 90 126 H 124 L 60 58 Z" fill="#0B1F3A" />
+    <!-- Gold top diagonal arrow arm -->
+    <path d="M 34 60 L 110 0 H 165 V 52 L 140 27 L 60 92 Z" fill="#EAB308" />
+    <!-- Arrowhead tip accent -->
+    <path d="M 98 0 H 165 V 65 L 140 40 L 98 0 Z" fill="#F59E0B" />
+  </g>
+  <!-- KRGONE Typography -->
+  <text x="205" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="88" letter-spacing="-2">
+    <tspan fill="#0B1F3A">KRG</tspan>
+    <tspan fill="#D4AF37">ONE</tspan>
+  </text>
+</svg>

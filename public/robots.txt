@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /dist/
+Disallow: /node_modules/
+
+Sitemap: https://krgone.com/sitemap.xml
