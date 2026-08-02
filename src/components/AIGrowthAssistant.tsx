@@ -16,30 +16,25 @@ interface AIGrowthAssistantProps {
 }
 
 const SUGGESTED_QUESTIONS = [
-  "Increase Revenue",
-  "Improve Sales",
-  "Business Assessment",
-  "Business Diagnostic",
-  "AI for Business",
+  "I need a website",
+  "I want AI solutions",
+  "I need business automation",
+  "I need a mobile app",
+  "Growth Consulting",
   "Book Consultation"
 ];
 
-const INITIAL_GREETING = `Hello,
+const INITIAL_GREETING = `Hello! Welcome to KRGONE Business Transformation Group.
 
-Welcome to KRGONE.
+I am your KRGONE AI Assistant, official virtual business advisor for KRGONE Technologies & KRGONE Consulting.
 
-I'm your AI Growth Assistant™.
+How can I help you today?
+• Business Websites & E-Commerce
+• Custom Mobile Apps & Software
+• AI Chatbots & Business Automation
+• Business Growth Strategy & Consulting
 
-I can help you understand
-• Business Growth
-• Revenue Strategy
-• Sales Transformation
-• Business Systems
-• SOP Development
-• AI Adoption
-• KRGONE Services
-
-How can I assist you today?`;
+Tell me about your business or requirement!`;
 
 export const AIGrowthAssistant: React.FC<AIGrowthAssistantProps> = ({
   onStartAssessment,
@@ -71,6 +66,20 @@ export const AIGrowthAssistant: React.FC<AIGrowthAssistantProps> = ({
       setHasUnread(false);
     }
   }, [messages, isOpen]);
+
+  useEffect(() => {
+    const handleOpenAssistant = (event: CustomEvent) => {
+      setIsOpen(true);
+      setHasUnread(false);
+      if (event.detail?.initialQuery) {
+        handleSendMessage(event.detail.initialQuery);
+      }
+    };
+    window.addEventListener('open-krgone-ai-assistant', handleOpenAssistant as EventListener);
+    return () => {
+      window.removeEventListener('open-krgone-ai-assistant', handleOpenAssistant as EventListener);
+    };
+  }, []);
 
   const handleSendMessage = async (textToSend?: string) => {
     const query = (textToSend || inputText).trim();

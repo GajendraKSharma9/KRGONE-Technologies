@@ -32,7 +32,6 @@ import { BusinessGrowthSprintPage } from "./components/BusinessGrowthSprintPage"
 import { FractionalSalesHeadPage } from "./components/FractionalSalesHeadPage";
 import { GatewayPage } from "./components/GatewayPage";
 import { TechnologiesPage } from "./components/TechnologiesPage";
-import { AIGrowthAssistant } from "./components/AIGrowthAssistant";
 
 const navigationConfig = [
   { title: "Home", href: "#", action: "LANDING", dropdown: null },
@@ -136,6 +135,37 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans antialiased overflow-x-hidden">
+      {/* ENTERPRISE TOP BAR */}
+      <div className="bg-[#070D1B] text-slate-300 text-xs py-2 px-4 sm:px-8 border-b border-[#c29d2f]/20 z-50 relative">
+        <div className="max-w-[1400px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+          <div className="flex items-center gap-3">
+            <span className="bg-[#D4AF37]/20 text-[#D4AF37] px-2 py-0.5 rounded font-bold uppercase tracking-wider text-[10px]">
+              Parent Brand
+            </span>
+            <span className="font-medium text-slate-200">
+              KRGONE Business Transformation Group
+            </span>
+          </div>
+          <div className="flex items-center gap-6 text-[11px]">
+            <a href="tel:+917300300330" className="flex items-center gap-1.5 text-slate-300 hover:text-[#D4AF37] transition-colors">
+              <Phone className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <span>+91 7300300330</span>
+            </a>
+            <a href="mailto:support.krgone@gmail.com" className="flex items-center gap-1.5 text-slate-300 hover:text-[#D4AF37] transition-colors">
+              <Mail className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <span>support.krgone@gmail.com</span>
+            </a>
+            <button 
+              onClick={() => { setActiveAppView('GATEWAY'); window.scrollTo(0, 0); }}
+              className="flex items-center gap-1 text-[#D4AF37] hover:underline font-semibold cursor-pointer pl-2 border-l border-slate-700"
+            >
+              <ArrowLeft className="w-3 h-3" />
+              <span>Group Hub</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Premium Navbar */}
       <nav 
         ref={navRef}
@@ -160,8 +190,8 @@ export function App() {
                 <span className="text-2xl sm:text-3xl font-black tracking-tight text-white font-sans flex items-center">
                   KRG<span className="text-[#D4AF37]">ONE</span>
                 </span>
-                <span className="text-xs sm:text-sm font-bold tracking-widest text-[#38BDF8] uppercase bg-[#38BDF8]/10 border border-[#38BDF8]/30 px-2.5 py-1 rounded-md">
-                  Technologies
+                <span className="text-xs sm:text-sm font-bold tracking-widest text-[#D4AF37] uppercase bg-[#D4AF37]/10 border border-[#D4AF37]/30 px-2.5 py-1 rounded-md">
+                  Consulting
                 </span>
               </div>
             </div>
@@ -175,7 +205,7 @@ export function App() {
                   {navigationConfig.map((item, idx) => (
                     <div 
                       key={idx} 
-                      className="relative group h-[72px] flex items-center"
+                      className="relative group h-[81px] lg:h-[97px] flex items-center"
                       onMouseEnter={() => item.dropdown && setActiveDropdown(item.title)}
                       onMouseLeave={() => item.dropdown && setActiveDropdown(null)}
                     >
@@ -216,7 +246,7 @@ export function App() {
                             activeDropdown === item.title ? 'opacity-100 translate-y-0 visible scale-100' : 'opacity-0 -translate-y-2 invisible scale-95'
                           }`}
                         >
-                          <div className="absolute -top-3 left-0 w-full h-4"></div> {/* Hover bridge */}
+                          <div className="absolute -top-4 left-0 w-full h-4"></div> {/* Hover bridge */}
                           <div className="px-4 py-3 mb-2 border-b border-[#c29d2f]/10">
                             <span className="text-[#c29d2f] text-[11px] font-bold uppercase tracking-[0.15em]">{item.title}</span>
                           </div>
@@ -297,7 +327,7 @@ export function App() {
                   </div>
                 </>
               ) : (
-                <div className="flex items-center">
+                <div className="flex items-center gap-3">
                   <button 
                     type="button"
                     onClick={(e) => { 
@@ -430,18 +460,26 @@ export function App() {
           <div className="lg:col-span-5 flex flex-col items-start justify-between lg:py-2">
             <div>
               {/* Top Pill Tag */}
-              <div className="border border-gray-200 rounded-full px-4 py-1.5 mb-6 lg:mb-8 bg-white shadow-sm inline-block">
-                <span className="text-[10px] font-bold text-gray-500 tracking-wider uppercase">Business Growth Consulting | AI Solutions | Growth OS™</span>
+              <div className="inline-flex items-center gap-2.5 border border-[#D4AF37]/40 rounded-full px-4 py-2 mb-6 lg:mb-8 bg-gradient-to-r from-[#070D1B] via-[#0B1F3A] to-[#070D1B] text-white shadow-md shadow-[#0B1F3A]/15 hover:border-[#D4AF37] transition-all group">
+                <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+                <span className="text-[11px] font-bold text-white tracking-wider uppercase flex items-center gap-1.5">
+                  <span>Business Growth Consulting</span>
+                  <span className="text-slate-400">•</span>
+                  <span>AI Solutions</span>
+                  <span className="text-slate-400">•</span>
+                  <span>Growth OS™</span>
+                </span>
               </div>
               
               {/* Primary Title */}
-              <h1 className="text-4xl lg:text-[3rem] font-extrabold text-[#0f172a] tracking-tight leading-[1.2] lg:leading-[1.1] mb-6">
-                Measure Before You Scale.<br/>Turn Knowledge into <span className="text-[#c29d2f]">Revenue Growth.</span>
+              <h1 className="text-4xl lg:text-[3rem] font-extrabold text-[#0f172a] tracking-tight leading-[1.2] lg:leading-[1.15] mb-6">
+                <span className="block mb-2 sm:mb-3">Measure Before You Scale.</span>
+                <span className="block">Turn Knowledge into <span className="text-[#c29d2f]">Revenue Growth.</span></span>
               </h1>
               
               {/* Paragraph */}
-              <p className="text-gray-600 text-base lg:text-lg leading-relaxed mb-8 lg:mb-10 max-w-[95%]">
-                We scan your entire operation to remove hidden friction and simplify your workflow. Get the exact metrics you need to protect your profits and scale with confidence.
+              <p className="text-slate-600 text-base lg:text-lg leading-relaxed mb-8 lg:mb-10 max-w-[95%]">
+                We diagnose your business to uncover hidden growth opportunities, improve revenue, strengthen profitability, and build scalable business systems. Get clear insights, measurable actions, and the confidence to make better business decisions.
               </p>
               
               {/* Call to Action Array */}
@@ -466,173 +504,179 @@ export function App() {
           
           {/* Right Column */}
           <div className="lg:col-span-7 w-full flex justify-center lg:justify-end mt-12 lg:mt-0">
-            <div className="w-full max-w-[800px] aspect-[4/3] h-auto py-8 max-h-[580px] bg-[#111827] rounded-2xl p-4 sm:p-5 border border-slate-700/60 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden text-slate-300 relative block w-full">
+            <div className="w-full max-w-[800px] bg-[#0f172a] rounded-2xl p-4 sm:p-5 border border-slate-700/90 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] flex flex-col text-slate-200 relative w-full">
               
               {/* Header */}
-              <div className="flex justify-between items-start mb-4 shrink-0">
+              <div className="flex flex-wrap justify-between items-center mb-3.5 pb-2.5 border-b border-slate-800/80 gap-2 shrink-0">
                 <div>
-                  <h3 className="text-white font-bold text-sm tracking-wide flex items-center gap-1.5">
-                    KRG ONE<span className="text-[8px] font-bold mt-0.5">™</span>
+                  <h3 className="text-white font-black text-sm sm:text-base tracking-wide flex items-center gap-1.5">
+                    KRG ONE<span className="text-[9px] font-bold text-[#d4af37]">™</span>
                   </h3>
-                  <p className="text-[11px] text-slate-400">Business Growth Dashboard</p>
+                  <p className="text-[11px] text-slate-300 font-medium">Business Growth Operating System™</p>
                 </div>
-                <div className="flex items-center gap-3 text-[11px]">
-                  <div className="flex items-center gap-1.5 text-slate-400">
-                    <Calendar className="w-3.5 h-3.5" />
-                    May 16, 2026
+                <div className="flex items-center gap-2.5 text-[11px] flex-wrap">
+                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800/90 border border-slate-700 text-slate-100 font-semibold shadow-inner">
+                    <Calendar className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>{new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                   </div>
-                  <button className="bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 rounded-md px-2.5 py-1 flex items-center gap-1.5 transition-colors">
+                  <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 font-mono text-[10px] font-bold tracking-wider">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.9)]"></span>
+                    </span>
+                    <span>LIVE</span>
+                  </div>
+                  <button className="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-md px-2.5 py-1 flex items-center gap-1.5 transition-colors font-medium">
                     Last 30 Days <ChevronDown className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
 
               {/* Dashboard Body */}
-              <div className="flex flex-col gap-3 flex-1 min-h-0">
+              <div className="flex flex-col gap-3">
                 
                 {/* Row A: Top Data Cards */}
-                <div className="grid grid-cols-3 gap-3 shrink-0 h-[30%]">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {/* Card 1: Growth Score */}
-                  <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 p-3 flex flex-col relative overflow-hidden">
-                    <h4 className="text-[11px] font-medium text-slate-300 mb-2">Business Growth Score</h4>
-                    <div className="flex-1 flex flex-col items-center justify-center relative">
-                      <svg viewBox="0 0 100 50" className="w-[85%] max-w-[120px] overflow-visible">
+                  <div className="bg-slate-800/70 rounded-xl border border-slate-700/80 p-3 flex flex-col justify-between shadow-sm min-h-[125px]">
+                    <h4 className="text-[11px] font-bold text-slate-100 mb-1">Business Growth Score</h4>
+                    <div className="flex-1 flex items-center justify-center relative py-1">
+                      <svg viewBox="0 0 100 55" className="w-[100px] h-[55px]">
                         <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#334155" strokeWidth="8" strokeLinecap="round" />
-                        <path d="M 10 50 A 40 40 0 0 1 70 15" fill="none" stroke="#d4af37" strokeWidth="8" strokeLinecap="round" />
+                        <path d="M 10 50 A 40 40 0 0 1 72 16" fill="none" stroke="#d4af37" strokeWidth="8" strokeLinecap="round" />
                       </svg>
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-1 text-center">
-                        <span className="text-2xl font-bold text-white leading-none">72</span>
-                        <span className="text-[9px] text-slate-400 block">/100</span>
+                      <div className="absolute top-[52%] left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+                        <span className="text-xl font-black text-white leading-none tracking-tight">72</span>
+                        <span className="text-[9px] text-slate-300 font-semibold block leading-none mt-0.5">/100</span>
                       </div>
                     </div>
-                    <div className="flex flex-col items-center justify-between text-center space-y-3 pt-2 mt-2 shrink-0">
-                      <span className="text-[10px] text-green-400 font-medium">Good</span>
-                      <p className="text-[9px] text-slate-400 leading-tight">
-                        You're performing better<br/>than 72% of businesses
+                    <div className="flex items-center justify-between text-center pt-1 border-t border-slate-700/50 mt-1">
+                      <span className="text-[10px] text-emerald-400 font-bold">Good</span>
+                      <p className="text-[9px] text-slate-300 font-medium">
+                        Top 28% of peers
                       </p>
                     </div>
                   </div>
 
                   {/* Card 2: Maturity Level */}
-                  <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 p-3 flex flex-col">
-                    <h4 className="text-[11px] font-medium text-slate-300 mb-1">Growth Maturity Level</h4>
-                    <div className="mt-1">
-                       <div className="text-[#d4af37] text-lg font-bold leading-tight">Level 3</div>
-                       <div className="text-[10px] text-slate-400">Growing</div>
+                  <div className="bg-slate-800/70 rounded-xl border border-slate-700/80 p-3 flex flex-col justify-between shadow-sm min-h-[125px]">
+                    <h4 className="text-[11px] font-bold text-slate-100 mb-0.5">Growth Maturity Level</h4>
+                    <div>
+                       <div className="text-[#ffd700] text-lg font-black leading-tight">Level 3</div>
+                       <div className="text-[10px] text-slate-200 font-semibold">Growing Stage</div>
                     </div>
-                    <div className="flex-1 flex items-end gap-1.5 pb-2 mt-2">
-                      <div className="w-full bg-[#d4af37] rounded-sm h-[20%]"></div>
-                      <div className="w-full bg-[#d4af37] rounded-sm h-[40%]"></div>
-                      <div className="w-full bg-[#d4af37] rounded-sm h-[60%]"></div>
-                      <div className="w-full bg-slate-700 rounded-sm h-[80%]"></div>
+                    <div className="flex items-end gap-1.5 h-6 my-1.5">
+                      <div className="w-full bg-[#d4af37] rounded-sm h-[30%]"></div>
+                      <div className="w-full bg-[#d4af37] rounded-sm h-[50%]"></div>
+                      <div className="w-full bg-[#d4af37] rounded-sm h-[75%]"></div>
+                      <div className="w-full bg-slate-700 rounded-sm h-[90%]"></div>
                       <div className="w-full bg-slate-700 rounded-sm h-[100%]"></div>
                     </div>
-                    <p className="text-[9px] text-slate-400 mt-1 leading-tight">
-                      Strong foundation with<br/>consistent growth potential
+                    <p className="text-[9px] text-slate-300 leading-tight font-medium border-t border-slate-700/50 pt-1">
+                      Strong growth foundation
                     </p>
                   </div>
 
                   {/* Card 3: Revenue Trend */}
-                  <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 p-3 flex flex-col">
-                    <h4 className="text-[11px] font-medium text-slate-300 mb-1">Revenue Trend</h4>
-                    <div className="mt-1">
-                       <div className="text-green-400 text-2xl font-bold leading-tight">+18.6%</div>
-                       <div className="text-[9px] text-slate-400">vs previous 30 days</div>
+                  <div className="bg-slate-800/70 rounded-xl border border-slate-700/80 p-3 flex flex-col justify-between shadow-sm min-h-[125px]">
+                    <h4 className="text-[11px] font-bold text-slate-100 mb-0.5">Revenue Trend</h4>
+                    <div>
+                       <div className="text-emerald-400 text-lg font-black leading-tight">+18.6%</div>
+                       <div className="text-[9px] text-slate-300 font-medium">vs previous 30 days</div>
                     </div>
-                    <div className="flex-1 w-full mt-3 relative">
-                       <svg viewBox="0 0 100 40" preserveAspectRatio="none" className="w-full h-full overflow-visible">
-                         <polyline points="0,35 20,30 40,32 60,25 80,28 100,10" fill="none" stroke="#d4af37" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                         <circle cx="0" cy="35" r="2" fill="#d4af37" />
-                         <circle cx="20" cy="30" r="2" fill="#d4af37" />
-                         <circle cx="40" cy="32" r="2" fill="#d4af37" />
-                         <circle cx="60" cy="25" r="2" fill="#d4af37" />
-                         <circle cx="80" cy="28" r="2" fill="#d4af37" />
-                         <circle cx="100" cy="10" r="3" fill="#fff" className="shadow-[0_0_4px_#d4af37]" />
+                    <div className="w-full h-7 my-1 relative">
+                       <svg viewBox="0 0 100 30" preserveAspectRatio="none" className="w-full h-full">
+                         <polyline points="0,25 20,20 40,22 60,15 80,18 100,5" fill="none" stroke="#d4af37" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                         <circle cx="0" cy="25" r="2" fill="#d4af37" />
+                         <circle cx="20" cy="20" r="2" fill="#d4af37" />
+                         <circle cx="40" cy="22" r="2" fill="#d4af37" />
+                         <circle cx="60" cy="15" r="2" fill="#d4af37" />
+                         <circle cx="80" cy="18" r="2" fill="#d4af37" />
+                         <circle cx="100" cy="5" r="3" fill="#fff" className="shadow-[0_0_6px_#d4af37]" />
                        </svg>
                     </div>
-                    <p className="text-[9px] text-slate-400 mt-2 leading-tight">
-                      Positive revenue momentum<br/>with strong upward trend
+                    <p className="text-[9px] text-slate-300 leading-tight font-medium border-t border-slate-700/50 pt-1">
+                      Strong upward momentum
                     </p>
                   </div>
                 </div>
 
                 {/* Row B: Middle Data Panels */}
-                <div className="grid grid-cols-2 gap-3 shrink-0 h-[45%]">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {/* Panel 1: Radar Chart */}
-                  <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 p-3 flex flex-col">
-                    <h4 className="text-[11px] font-medium text-slate-300 mb-1 shrink-0">Growth Pillar Performance</h4>
-                    <div className="flex-1 relative flex items-center justify-center min-h-0">
-                      {/* Custom SVG Radar */}
-                      <svg viewBox="0 0 200 200" className="w-full h-full max-h-[140px] overflow-visible">
+                  <div className="bg-slate-800/70 rounded-xl border border-slate-700/80 p-3 flex flex-col shadow-sm">
+                    <h4 className="text-[11px] font-bold text-slate-100 mb-1">Growth Pillar Performance</h4>
+                    <div className="relative flex items-center justify-center my-1 py-1">
+                      {/* Custom SVG Radar with clean viewBox padding */}
+                      <svg viewBox="-10 -10 260 215" className="w-full max-w-[240px] h-[155px]">
                         {/* Radar webs */}
-                        <polygon points="100,20 162.5,50.1 178,117.8 134.7,172.1 65.3,172.1 22,117.8 37.5,50.1" fill="none" stroke="#334155" strokeWidth="1" />
-                        <polygon points="100,40 146.9,62.6 158.5,113.4 126,154.1 74,154.1 41.5,113.4 53.1,62.6" fill="none" stroke="#334155" strokeWidth="1" />
-                        <polygon points="100,60 131.3,75.1 139,108.9 117.4,136 82.6,136 61,108.9 68.7,75.1" fill="none" stroke="#334155" strokeWidth="1" />
-                        <polygon points="100,80 115.6,87.5 119.5,104.5 108.7,118 91.3,118 80.5,104.5 84.4,87.5" fill="none" stroke="#334155" strokeWidth="1" />
+                        <polygon points="120,25 176.2,52 190.2,113 151.2,162 88.8,162 49.8,113 63.8,52" fill="none" stroke="#475569" strokeWidth="1" />
+                        <polygon points="120,43 162.2,63.2 172.6,109 143.4,145.8 96.6,145.8 67.4,109 77.8,63.2" fill="none" stroke="#475569" strokeWidth="1" />
+                        <polygon points="120,61 148.2,74.5 155.1,105 135.6,129.5 104.4,129.5 84.9,105 91.8,74.5" fill="none" stroke="#475569" strokeWidth="1" />
                         
                         {/* Axes */}
-                        <line x1="100" y1="100" x2="100" y2="20" stroke="#334155" strokeWidth="1" />
-                        <line x1="100" y1="100" x2="162.5" y2="50.1" stroke="#334155" strokeWidth="1" />
-                        <line x1="100" y1="100" x2="178" y2="117.8" stroke="#334155" strokeWidth="1" />
-                        <line x1="100" y1="100" x2="134.7" y2="172.1" stroke="#334155" strokeWidth="1" />
-                        <line x1="100" y1="100" x2="65.3" y2="172.1" stroke="#334155" strokeWidth="1" />
-                        <line x1="100" y1="100" x2="22" y2="117.8" stroke="#334155" strokeWidth="1" />
-                        <line x1="100" y1="100" x2="37.5" y2="50.1" stroke="#334155" strokeWidth="1" />
+                        <line x1="120" y1="97" x2="120" y2="25" stroke="#475569" strokeWidth="1" />
+                        <line x1="120" y1="97" x2="176.2" y2="52" stroke="#475569" strokeWidth="1" />
+                        <line x1="120" y1="97" x2="190.2" y2="113" stroke="#475569" strokeWidth="1" />
+                        <line x1="120" y1="97" x2="151.2" y2="162" stroke="#475569" strokeWidth="1" />
+                        <line x1="120" y1="97" x2="88.8" y2="162" stroke="#475569" strokeWidth="1" />
+                        <line x1="120" y1="97" x2="49.8" y2="113" stroke="#475569" strokeWidth="1" />
+                        <line x1="120" y1="97" x2="63.8" y2="52" stroke="#475569" strokeWidth="1" />
 
                         {/* Data: Industry Avg (dashed gray) */}
-                        <polygon points="100,45 146.9,62.6 143.9,110 128.2,158.6 78.3,145.1 61,108.9 57,65.7" fill="none" stroke="#64748b" strokeWidth="1.5" strokeDasharray="3,3" />
+                        <polygon points="120,48 162.2,63.2 159.5,106 145.4,149.8 100.5,137.7 84.9,105 81.3,66" fill="none" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="3,3" />
                         
                         {/* Data: Your Score (solid gold, translucent fill) */}
-                        <polygon points="100,30 143,65.7 163.4,114.5 132.5,167.6 80.5,140.5 41.5,113.4 49.2,59.5" fill="rgba(212,175,55,0.15)" stroke="#d4af37" strokeWidth="1.5" />
-                        <circle cx="100" cy="30" r="2" fill="#d4af37" />
-                        <circle cx="143" cy="65.7" r="2" fill="#d4af37" />
-                        <circle cx="163.4" cy="114.5" r="2" fill="#d4af37" />
-                        <circle cx="132.5" cy="167.6" r="2" fill="#d4af37" />
-                        <circle cx="80.5" cy="140.5" r="2" fill="#d4af37" />
-                        <circle cx="41.5" cy="113.4" r="2" fill="#d4af37" />
-                        <circle cx="49.2" cy="59.5" r="2" fill="#d4af37" />
+                        <polygon points="120,34 158.7,66 177,110 149.2,158 102.5,133.5 67.4,109 74.3,60.5" fill="rgba(212,175,55,0.25)" stroke="#ffd700" strokeWidth="2" />
+                        <circle cx="120" cy="34" r="2.5" fill="#ffd700" />
+                        <circle cx="158.7" cy="66" r="2.5" fill="#ffd700" />
+                        <circle cx="177" cy="110" r="2.5" fill="#ffd700" />
+                        <circle cx="149.2" cy="158" r="2.5" fill="#ffd700" />
+                        <circle cx="102.5" cy="133.5" r="2.5" fill="#ffd700" />
+                        <circle cx="67.4" cy="109" r="2.5" fill="#ffd700" />
+                        <circle cx="74.3" cy="60.5" r="2.5" fill="#ffd700" />
 
-                        {/* Labels */}
-                        <text x="100" y="10" fill="#94a3b8" fontSize="7" textAnchor="middle">Leadership &amp; Vision</text>
-                        <text x="166" y="47" fill="#94a3b8" fontSize="7" textAnchor="start">Sales &amp; Revenue</text>
-                        <text x="180" y="123" fill="#94a3b8" fontSize="7" textAnchor="start">Marketing &amp; Customer Growth</text>
-                        <text x="137" y="185" fill="#94a3b8" fontSize="7" textAnchor="start">Operations &amp; Process</text>
-                        <text x="63" y="185" fill="#94a3b8" fontSize="7" textAnchor="end">Finance &amp; Business Performance</text>
-                        <text x="20" y="123" fill="#94a3b8" fontSize="7" textAnchor="end">People &amp; Organization</text>
-                        <text x="34" y="47" fill="#94a3b8" fontSize="7" textAnchor="end">Technology &amp; AI</text>
+                        {/* Labels with clear position offsets */}
+                        <text x="120" y="14" fill="#f1f5f9" fontSize="8" fontWeight="700" textAnchor="middle">Leadership</text>
+                        <text x="182" y="48" fill="#f1f5f9" fontSize="8" fontWeight="700" textAnchor="start">Sales &amp; Rev</text>
+                        <text x="196" y="116" fill="#f1f5f9" fontSize="8" fontWeight="700" textAnchor="start">Marketing</text>
+                        <text x="155" y="176" fill="#f1f5f9" fontSize="8" fontWeight="700" textAnchor="start">Operations</text>
+                        <text x="85" y="176" fill="#f1f5f9" fontSize="8" fontWeight="700" textAnchor="end">Finance</text>
+                        <text x="44" y="116" fill="#f1f5f9" fontSize="8" fontWeight="700" textAnchor="end">Culture</text>
+                        <text x="58" y="48" fill="#f1f5f9" fontSize="8" fontWeight="700" textAnchor="end">Tech &amp; AI</text>
                       </svg>
                     </div>
-                    <div className="flex justify-center gap-4 mt-1 shrink-0">
-                       <div className="flex items-center gap-1.5 text-[9px] text-slate-400">
-                         <div className="w-3 h-0.5 bg-[#d4af37]"></div> Your Score
+                    <div className="flex justify-center gap-4 mt-0.5">
+                       <div className="flex items-center gap-1.5 text-[9.5px] text-slate-200 font-semibold">
+                         <div className="w-3 h-0.5 bg-[#ffd700]"></div> Your Score
                        </div>
-                       <div className="flex items-center gap-1.5 text-[9px] text-slate-400">
-                         <div className="w-3 h-0.5 border-t border-dashed border-slate-400"></div> Industry Avg.
+                       <div className="flex items-center gap-1.5 text-[9.5px] text-slate-300 font-medium">
+                         <div className="w-3 h-0.5 border-t border-dashed border-slate-300"></div> Industry Avg.
                        </div>
                     </div>
                   </div>
 
                   {/* Panel 2: Priority Actions */}
-                  <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 p-3 flex flex-col">
-                    <h4 className="text-[11px] font-medium text-slate-300 mb-2 shrink-0">Priority Actions</h4>
-                    <div className="flex flex-col gap-2.5 flex-1 overflow-y-auto min-h-0 pr-1">
+                  <div className="bg-slate-800/70 rounded-xl border border-slate-700/80 p-3 flex flex-col shadow-sm">
+                    <h4 className="text-[11px] font-bold text-slate-100 mb-2">Priority Actions</h4>
+                    <div className="flex flex-col gap-2 flex-1">
                       {[
-                        { num: 1, title: 'Improve Sales Conversion Process', sub: 'High Impact • Quick Win', bg: 'bg-amber-500/20 text-amber-500' },
-                        { num: 2, title: 'Strengthen Financial Planning', sub: 'High Impact • Long Term', bg: 'bg-amber-500/20 text-amber-400' },
-                        { num: 3, title: 'Optimize Operational Efficiency', sub: 'Medium Impact • Quick Win', bg: 'bg-emerald-500/20 text-emerald-400' },
-                        { num: 4, title: 'Build Scalable Systems & SOPs', sub: 'Medium Impact • Long Term', bg: 'bg-purple-500/20 text-purple-400' }
+                        { num: 1, title: 'Improve Sales Conversion Process', sub: 'High Impact • Quick Win', bg: 'bg-amber-500/30 text-amber-300 border border-amber-500/50' },
+                        { num: 2, title: 'Strengthen Financial Planning', sub: 'High Impact • Long Term', bg: 'bg-amber-500/30 text-amber-300 border border-amber-500/50' },
+                        { num: 3, title: 'Optimize Operational Efficiency', sub: 'Medium Impact • Quick Win', bg: 'bg-emerald-500/30 text-emerald-300 border border-emerald-500/50' },
+                        { num: 4, title: 'Build Scalable Systems & SOPs', sub: 'Medium Impact • Long Term', bg: 'bg-purple-500/30 text-purple-300 border border-purple-500/50' }
                       ].map((action, i) => (
-                        <div key={i} className="flex items-center justify-between p-2 rounded-lg hover:bg-slate-700/40 transition-colors group cursor-pointer border border-transparent hover:border-slate-600">
-                          <div className="flex items-center gap-2.5">
-                            <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold ${action.bg}`}>
+                        <div key={i} className="flex items-center justify-between p-2 rounded-lg hover:bg-slate-700/60 transition-colors group cursor-pointer border border-slate-700/40 hover:border-slate-500">
+                          <div className="flex items-center gap-2.5 min-w-0">
+                            <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${action.bg}`}>
                               {action.num}
                             </div>
-                            <div>
-                              <h5 className="text-[11px] text-slate-200 font-medium leading-tight group-hover:text-white transition-colors">{action.title}</h5>
-                              <p className="text-[9px] text-slate-500 mt-0.5">{action.sub}</p>
+                            <div className="min-w-0">
+                              <h5 className="text-[11px] text-white font-semibold leading-tight group-hover:text-[#ffd700] transition-colors truncate">{action.title}</h5>
+                              <p className="text-[9.5px] text-slate-300 font-medium mt-0.5 truncate">{action.sub}</p>
                             </div>
                           </div>
-                          <ChevronRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-slate-300 transition-colors" />
+                          <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors shrink-0 ml-1" />
                         </div>
                       ))}
                     </div>
@@ -640,30 +684,30 @@ export function App() {
                 </div>
 
                 {/* Row C: Bottom Metrics Row */}
-                <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 p-3 shrink-0 h-[25%] flex flex-col">
-                  <h4 className="text-[11px] font-medium text-slate-300 mb-2">Top Growth Opportunities</h4>
-                  <div className="grid grid-cols-4 gap-2 flex-1">
+                <div className="bg-slate-800/70 rounded-xl border border-slate-700/80 p-3 flex flex-col shadow-sm">
+                  <h4 className="text-[11px] font-bold text-slate-100 mb-2">Top Growth Opportunities</h4>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {[
-                      { title: 'Increase Revenue Potential', val: '₹2.45 Cr', icon: <TrendingUp className="w-3.5 h-3.5 text-amber-400" /> },
-                      { title: 'Improve Profitability', val: '₹78.5 L', icon: <BarChart className="w-3.5 h-3.5 text-amber-400" /> },
-                      { title: 'Reduce Operational Cost', val: '₹36.2 L', icon: <TrendingDown className="w-3.5 h-3.5 text-emerald-400" /> },
-                      { title: 'Improve Working Capital', val: '₹1.12 Cr', icon: <Activity className="w-3.5 h-3.5 text-amber-400" /> }
+                      { title: 'Revenue Potential', val: '₹2.45 Cr', icon: <TrendingUp className="w-3.5 h-3.5 text-amber-400 shrink-0" /> },
+                      { title: 'Improve Profitability', val: '₹78.5 L', icon: <BarChart className="w-3.5 h-3.5 text-amber-400 shrink-0" /> },
+                      { title: 'Reduce Ops Cost', val: '₹36.2 L', icon: <TrendingDown className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> },
+                      { title: 'Working Capital', val: '₹1.12 Cr', icon: <Activity className="w-3.5 h-3.5 text-amber-400 shrink-0" /> }
                     ].map((op, i) => (
-                      <div key={i} className="bg-slate-900/50 rounded-lg border border-slate-700/60 p-2 flex flex-col justify-center relative overflow-hidden">
-                        <h5 className="text-[9px] text-slate-400 leading-tight mb-1 pr-4">{op.title}</h5>
-                        <div className="text-[13px] font-bold text-white mb-0.5">{op.val}</div>
-                        <div className="text-[8px] text-slate-500">Annual Opportunity</div>
-                        <div className="absolute bottom-2 right-2 opacity-60">
-                           {op.icon}
+                      <div key={i} className="bg-slate-900/80 rounded-lg border border-slate-700/80 p-2.5 flex flex-col justify-between relative overflow-hidden">
+                        <div className="flex items-center justify-between gap-1 mb-1">
+                          <h5 className="text-[10px] text-slate-200 font-semibold leading-tight truncate">{op.title}</h5>
+                          {op.icon}
                         </div>
+                        <div className="text-[14px] font-black text-white leading-tight">{op.val}</div>
+                        <div className="text-[8.5px] text-slate-400 font-medium mt-0.5">Annual Opportunity</div>
                       </div>
                     ))}
                   </div>
                 </div>
                 
                 {/* Footer Caption */}
-                <div className="text-center mt-1 shrink-0">
-                  <p className="text-[9px] text-slate-500">Recommendations are based on data from your Business Growth Assessment</p>
+                <div className="text-center mt-0.5">
+                  <p className="text-[9.5px] text-slate-400 font-medium">Real-time metrics calculated from your Business Growth Assessment</p>
                 </div>
 
               </div>
@@ -682,19 +726,30 @@ export function App() {
         <div className="max-w-7xl mx-auto relative z-10">
           
           {/* Section Header */}
-          <div className="text-center max-w-4xl mx-auto mb-16 bg-white border-2 border-slate-200 border-b-[8px] border-r-[6px] rounded-3xl p-8 md:p-12 shadow-sm relative">
-            <p className="text-[18px] font-bold tracking-widest text-[#d4af37] uppercase flex items-center justify-center gap-3 mb-5">
-              <span className="w-2 h-2 rounded-full bg-[#d4af37]"></span>
-              BUSINESS CHALLENGES WE SOLVE
-              <span className="w-2 h-2 rounded-full bg-[#d4af37]"></span>
-            </p>
-            <h2 className="text-4xl md:text-5xl font-black text-[#0a1128] tracking-tight leading-[1.15] mb-6">
-              What's Holding <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c29d2f] to-[#e5c158]">Your Business</span> Back?
+          <div className="text-center max-w-4xl mx-auto mb-16 bg-white border-2 border-slate-300 border-b-[8px] border-r-[6px] rounded-3xl p-8 md:p-12 shadow-md relative">
+            <div className="inline-flex items-center justify-center gap-2.5 px-4 py-1.5 rounded-full bg-amber-50 border border-amber-300/80 mb-5 shadow-xs">
+              <span className="w-2 h-2 rounded-full bg-[#b3881b]"></span>
+              <p className="text-xs sm:text-sm font-extrabold tracking-widest text-[#856108] uppercase">
+                BUSINESS CHALLENGES WE SOLVE
+              </p>
+              <span className="w-2 h-2 rounded-full bg-[#b3881b]"></span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0f172a] tracking-tight leading-[1.15] mb-6">
+              What's Holding <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#a17a14] via-[#c29d2f] to-[#a17a14]">Your Business</span> Back?
             </h2>
-            <div className="text-slate-600 text-[15px] leading-relaxed font-medium max-w-3xl mx-auto space-y-2">
-              <p>Every business wants to grow—but growth doesn't happen by chance.</p>
-              <p>Many businesses work hard every day, yet sales, profits, and business performance don't improve as expected.</p>
-              <p>The real challenges often remain unnoticed until they start limiting growth.</p>
+            <div className="space-y-3 max-w-3xl mx-auto text-center text-slate-600 text-base sm:text-lg leading-relaxed">
+              <p>
+                Every business wants to grow—but growth doesn't happen by chance.
+              </p>
+              <p>
+                Many businesses work hard every day, yet sales, revenue, and profits don't improve as expected.
+              </p>
+              <p>
+                The biggest challenges are often hidden until they begin affecting growth, profitability, and decision-making.
+              </p>
+              <p className="pt-1 text-slate-800 font-semibold">
+                The first step to solving a problem is identifying it.
+              </p>
             </div>
           </div>
 
@@ -823,7 +878,7 @@ export function App() {
               How KRG ONE <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c29d2f] to-[#e5c158]">Supports</span> Your Business Growth
             </h2>
             <div className="text-slate-600 text-[16px] leading-relaxed font-medium max-w-3xl mx-auto space-y-2">
-              <p>Our proven approach identifies the right opportunities, prioritizes actions, and supports you in building a stronger, more profitable business.</p>
+              <p>We assess your business, identify growth opportunities, prioritize what matters most, and provide practical strategies to improve revenue, profitability, and long-term business performance.</p>
             </div>
           </div>
 
@@ -2020,6 +2075,12 @@ export function App() {
                 icon: ClipboardList,
                 q: "What happens after I complete the Business Growth Assessment™?",
                 a: "You'll receive your Business Growth Score™, insights across the Growth Pillars™, and recommendations. You can then choose to book a Business Growth Consultation™ to review the results."
+              },
+              {
+                num: "06",
+                icon: Clock,
+                q: "How long does the assessment take and when do I get results?",
+                a: "The Business Growth Assessment™ takes only 5–7 minutes to complete online. Immediately after submission, you will receive your Business Growth Score™ and personalized Business Health Dashboard™."
               }
             ].map((faq, i) => (
               <div 
@@ -2198,12 +2259,6 @@ export function App() {
       ) : (
         <AssessmentEngine onReturnHome={() => { setActiveAppView('LANDING'); window.scrollTo(0, 0); }} />
       )}
-
-      {/* KRGONE AI Growth Assistant™ Floating Widget */}
-      <AIGrowthAssistant 
-        onStartAssessment={() => { setActiveAppView('ASSESSMENT_PORTAL'); window.scrollTo(0, 0); }}
-        onBookConsultation={() => { setActiveAppView('BUSINESS_GROWTH_CONSULTATION'); window.scrollTo(0, 0); }}
-      />
     </div>
   );
 }

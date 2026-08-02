@@ -12,7 +12,9 @@ import {
   Layout,
   Network,
   Layers,
-  Sparkles
+  Sparkles,
+  ClipboardCheck,
+  Globe
 } from 'lucide-react';
 
 interface GatewayPageProps {
@@ -25,7 +27,7 @@ export function GatewayPage({ onNavigateToConsulting, onNavigateToTechnologies }
     <div className="min-h-screen bg-[#F8FAFC] font-sans text-slate-900 overflow-x-hidden selection:bg-[#0B1F3A] selection:text-white pb-24">
       
       {/* HERO SECTION */}
-      <div className="relative pt-14 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
+      <div className="relative pt-8 pb-4 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#0B1F3A] leading-none mb-3">
           KRGONE
           <span className="block text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-800 tracking-tight mt-3">
@@ -34,7 +36,7 @@ export function GatewayPage({ onNavigateToConsulting, onNavigateToTechnologies }
         </h1>
 
         {/* Subtitle list */}
-        <div className="inline-flex items-center justify-center gap-3 px-6 py-2 rounded-full bg-white shadow-sm border border-slate-200/90 my-5 text-xs sm:text-sm font-bold tracking-[0.18em] uppercase text-[#0B1F3A]">
+        <div className="inline-flex items-center justify-center gap-3 px-6 py-2 rounded-full bg-white shadow-sm border border-slate-200/90 my-4 text-xs sm:text-sm font-bold tracking-[0.18em] uppercase text-[#0B1F3A]">
           <span>Strategy</span>
           <span className="text-[#D4AF37] font-black">•</span>
           <span>Technology</span>
@@ -43,13 +45,14 @@ export function GatewayPage({ onNavigateToConsulting, onNavigateToTechnologies }
         </div>
 
         {/* Paragraph */}
-        <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto font-medium">
-          Two specialized divisions. One shared mission. Helping organizations solve complex business challenges through strategic consulting and AI-powered technology solutions.
+        <p className="text-slate-900 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto font-semibold bg-white px-6 py-3.5 rounded-2xl border border-slate-300/80 shadow-md">
+          Two specialized divisions. One shared mission.<br className="hidden sm:inline" />
+          Helping organizations solve complex business challenges through strategic consulting and AI-powered technology solutions.
         </p>
       </div>
 
       {/* TWO MAIN DIVISION CARDS */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 -mt-1 sm:-mt-2">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           
           {/* LEFT CARD: KRGONE CONSULTING */}
@@ -99,7 +102,7 @@ export function GatewayPage({ onNavigateToConsulting, onNavigateToTechnologies }
                 <div className="w-12 h-1 bg-[#2563EB] mb-5 rounded-full"></div>
 
                 {/* Paragraph */}
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-md">
+                <p className="text-slate-200 text-xs sm:text-sm leading-relaxed max-w-md font-medium">
                   We help founders, business owners and leadership teams accelerate growth through strategic consulting, business diagnostics and our proprietary Business Growth Operating System™.
                 </p>
               </div>
@@ -115,44 +118,54 @@ export function GatewayPage({ onNavigateToConsulting, onNavigateToTechnologies }
                   </p>
                 </div>
 
-                <div className="grid grid-cols-4 gap-3 text-center mb-8">
+                <div className="grid grid-cols-5 gap-1.5 sm:gap-3 text-center mb-8">
                   {/* Focus 1 */}
                   <div className="flex flex-col items-center group/item">
-                    <div className="w-12 h-12 rounded-xl bg-blue-50/80 border border-blue-200/80 flex items-center justify-center mb-2.5 text-[#2563EB] shadow-sm group-hover/item:scale-105 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all">
-                      <Landmark className="w-5 h-5" strokeWidth={2} />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50/80 border border-blue-200/80 flex items-center justify-center mb-2.5 text-[#2563EB] shadow-sm group-hover/item:scale-105 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all">
+                      <Landmark className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
                     </div>
-                    <span className="text-xs sm:text-[13px] leading-snug text-[#0B1F3A] font-extrabold">
+                    <span className="text-[10px] sm:text-[12px] leading-tight sm:leading-snug text-[#0B1F3A] font-extrabold">
                       Business<br />Strategy
                     </span>
                   </div>
 
                   {/* Focus 2 */}
                   <div className="flex flex-col items-center group/item">
-                    <div className="w-12 h-12 rounded-xl bg-blue-50/80 border border-blue-200/80 flex items-center justify-center mb-2.5 text-[#2563EB] shadow-sm group-hover/item:scale-105 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all">
-                      <TrendingUp className="w-5 h-5" strokeWidth={2} />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50/80 border border-blue-200/80 flex items-center justify-center mb-2.5 text-[#2563EB] shadow-sm group-hover/item:scale-105 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all">
+                      <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
                     </div>
-                    <span className="text-xs sm:text-[13px] leading-snug text-[#0B1F3A] font-extrabold">
+                    <span className="text-[10px] sm:text-[12px] leading-tight sm:leading-snug text-[#0B1F3A] font-extrabold">
                       Revenue<br />Growth
                     </span>
                   </div>
 
                   {/* Focus 3 */}
                   <div className="flex flex-col items-center group/item">
-                    <div className="w-12 h-12 rounded-xl bg-blue-50/80 border border-blue-200/80 flex items-center justify-center mb-2.5 text-[#2563EB] shadow-sm group-hover/item:scale-105 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all">
-                      <Cpu className="w-5 h-5" strokeWidth={2} />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50/80 border border-blue-200/80 flex items-center justify-center mb-2.5 text-[#2563EB] shadow-sm group-hover/item:scale-105 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all">
+                      <Cpu className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
                     </div>
-                    <span className="text-xs sm:text-[13px] leading-snug text-[#0B1F3A] font-extrabold">
+                    <span className="text-[10px] sm:text-[12px] leading-tight sm:leading-snug text-[#0B1F3A] font-extrabold">
                       AI<br />Readiness
                     </span>
                   </div>
 
                   {/* Focus 4 */}
                   <div className="flex flex-col items-center group/item">
-                    <div className="w-12 h-12 rounded-xl bg-blue-50/80 border border-blue-200/80 flex items-center justify-center mb-2.5 text-[#2563EB] shadow-sm group-hover/item:scale-105 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all">
-                      <Layers className="w-5 h-5" strokeWidth={2} />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-50/80 border border-blue-200/80 flex items-center justify-center mb-2.5 text-[#2563EB] shadow-sm group-hover/item:scale-105 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all">
+                      <Layers className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
                     </div>
-                    <span className="text-xs sm:text-[13px] leading-snug text-[#0B1F3A] font-extrabold">
+                    <span className="text-[10px] sm:text-[12px] leading-tight sm:leading-snug text-[#0B1F3A] font-extrabold">
                       Business<br />Transformation
+                    </span>
+                  </div>
+
+                  {/* Focus 5 */}
+                  <div className="flex flex-col items-center group/item">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-50/90 border border-amber-300/80 flex items-center justify-center mb-2.5 text-[#D4AF37] shadow-sm group-hover/item:scale-105 group-hover/item:bg-[#D4AF37] group-hover/item:text-slate-900 transition-all">
+                      <ClipboardCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#B8860B] group-hover/item:text-slate-900" strokeWidth={2} />
+                    </div>
+                    <span className="text-[10px] sm:text-[12px] leading-tight sm:leading-snug text-[#0B1F3A] font-extrabold">
+                      Free Growth<br />Assessment
                     </span>
                   </div>
                 </div>
@@ -213,7 +226,7 @@ export function GatewayPage({ onNavigateToConsulting, onNavigateToTechnologies }
                 <div className="w-12 h-1 bg-[#38BDF8] mb-5 rounded-full"></div>
 
                 {/* Paragraph */}
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-md">
+                <p className="text-slate-200 text-xs sm:text-sm leading-relaxed max-w-md font-medium">
                   We build intelligent digital solutions, automation systems and AI-powered platforms that drive efficiency, innovation and measurable business growth.
                 </p>
               </div>
@@ -229,44 +242,54 @@ export function GatewayPage({ onNavigateToConsulting, onNavigateToTechnologies }
                   </p>
                 </div>
 
-                <div className="grid grid-cols-4 gap-3 text-center mb-8">
+                <div className="grid grid-cols-5 gap-1.5 sm:gap-3 text-center mb-8">
                   {/* Solution 1 */}
                   <div className="flex flex-col items-center group/item">
-                    <div className="w-12 h-12 rounded-xl bg-cyan-50/80 border border-cyan-200/80 flex items-center justify-center mb-2.5 text-[#0284C7] shadow-sm group-hover/item:scale-105 group-hover/item:bg-[#0284C7] group-hover/item:text-white transition-all">
-                      <Bot className="w-5 h-5" strokeWidth={2} />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-cyan-50/80 border border-cyan-200/80 flex items-center justify-center mb-2.5 text-[#0284C7] shadow-sm group-hover/item:scale-105 group-hover/item:bg-[#0284C7] group-hover/item:text-white transition-all">
+                      <Bot className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
                     </div>
-                    <span className="text-xs sm:text-[13px] leading-snug text-[#0B1F3A] font-extrabold">
+                    <span className="text-[10px] sm:text-[12px] leading-tight sm:leading-snug text-[#0B1F3A] font-extrabold">
                       AI<br />Solutions
                     </span>
                   </div>
 
                   {/* Solution 2 */}
                   <div className="flex flex-col items-center group/item">
-                    <div className="w-12 h-12 rounded-xl bg-cyan-50/80 border border-cyan-200/80 flex items-center justify-center mb-2.5 text-[#0284C7] shadow-sm group-hover/item:scale-105 group-hover/item:bg-[#0284C7] group-hover/item:text-white transition-all">
-                      <Code2 className="w-5 h-5" strokeWidth={2} />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-cyan-50/80 border border-cyan-200/80 flex items-center justify-center mb-2.5 text-[#0284C7] shadow-sm group-hover/item:scale-105 group-hover/item:bg-[#0284C7] group-hover/item:text-white transition-all">
+                      <Code2 className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
                     </div>
-                    <span className="text-xs sm:text-[13px] leading-snug text-[#0B1F3A] font-extrabold">
-                      Software<br />Development
+                    <span className="text-[10px] sm:text-[12px] leading-tight sm:leading-snug text-[#0B1F3A] font-extrabold">
+                      Software<br />Dev
                     </span>
                   </div>
 
                   {/* Solution 3 */}
                   <div className="flex flex-col items-center group/item">
-                    <div className="w-12 h-12 rounded-xl bg-cyan-50/80 border border-cyan-200/80 flex items-center justify-center mb-2.5 text-[#0284C7] shadow-sm group-hover/item:scale-105 group-hover/item:bg-[#0284C7] group-hover/item:text-white transition-all">
-                      <Network className="w-5 h-5" strokeWidth={2} />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-cyan-50/80 border border-cyan-200/80 flex items-center justify-center mb-2.5 text-[#0284C7] shadow-sm group-hover/item:scale-105 group-hover/item:bg-[#0284C7] group-hover/item:text-white transition-all">
+                      <Network className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
                     </div>
-                    <span className="text-xs sm:text-[13px] leading-snug text-[#0B1F3A] font-extrabold">
+                    <span className="text-[10px] sm:text-[12px] leading-tight sm:leading-snug text-[#0B1F3A] font-extrabold">
                       Automation &amp;<br />Integrations
                     </span>
                   </div>
 
                   {/* Solution 4 */}
                   <div className="flex flex-col items-center group/item">
-                    <div className="w-12 h-12 rounded-xl bg-cyan-50/80 border border-cyan-200/80 flex items-center justify-center mb-2.5 text-[#0284C7] shadow-sm group-hover/item:scale-105 group-hover/item:bg-[#0284C7] group-hover/item:text-white transition-all">
-                      <Layout className="w-5 h-5" strokeWidth={2} />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-cyan-50/80 border border-cyan-200/80 flex items-center justify-center mb-2.5 text-[#0284C7] shadow-sm group-hover/item:scale-105 group-hover/item:bg-[#0284C7] group-hover/item:text-white transition-all">
+                      <Layout className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
                     </div>
-                    <span className="text-xs sm:text-[13px] leading-snug text-[#0B1F3A] font-extrabold">
+                    <span className="text-[10px] sm:text-[12px] leading-tight sm:leading-snug text-[#0B1F3A] font-extrabold">
                       Digital<br />Platforms
+                    </span>
+                  </div>
+
+                  {/* Solution 5 */}
+                  <div className="flex flex-col items-center group/item">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-cyan-50/80 border border-cyan-200/80 flex items-center justify-center mb-2.5 text-[#0284C7] shadow-sm group-hover/item:scale-105 group-hover/item:bg-[#0284C7] group-hover/item:text-white transition-all">
+                      <Globe className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
+                    </div>
+                    <span className="text-[10px] sm:text-[12px] leading-tight sm:leading-snug text-[#0B1F3A] font-extrabold">
+                      Digital<br />Transformation
                     </span>
                   </div>
                 </div>

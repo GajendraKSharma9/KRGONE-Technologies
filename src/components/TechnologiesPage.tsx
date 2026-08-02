@@ -19,6 +19,10 @@ export function TechnologiesPage({ onBackToGateway, onNavigateToConsulting }: Te
   const [selectedServiceFilter, setSelectedServiceFilter] = useState<string>('all');
   const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
 
+  const triggerAIAssistant = (initialQuery?: string) => {
+    window.dispatchEvent(new CustomEvent('open-krgone-ai-assistant', { detail: { initialQuery } }));
+  };
+
   // Form State
   const [formData, setFormData] = useState({
     name: '',
@@ -584,6 +588,60 @@ export function TechnologiesPage({ onBackToGateway, onNavigateToConsulting }: Te
               })}
           </div>
 
+        </div>
+      </section>
+
+      {/* KRGONE AI VIRTUAL BUSINESS ADVISOR SHOWCASE */}
+      <section className="py-16 bg-gradient-to-r from-[#070D1B] via-[#0B1F3A] to-[#12223D] text-white border-y border-[#D4AF37]/30 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="bg-[#0A1628]/90 backdrop-blur-md rounded-2xl border border-[#D4AF37]/30 p-8 sm:p-10 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="max-w-2xl text-left">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-bold uppercase tracking-wider mb-4">
+                <Bot className="w-4 h-4" />
+                <span>KRGONE AI Virtual Business Advisor</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight mb-3">
+                Experience AI-Powered Business Transformation
+              </h2>
+              <p className="text-slate-300 text-sm leading-relaxed mb-6">
+                Consult with <strong className="text-white">KRGONE AI Assistant</strong> — our official virtual advisor for KRGONE Technologies & KRGONE Consulting. Get instant guidance for custom websites, AI chatbots, mobile apps, business automation, and growth strategies.
+              </p>
+              
+              <div className="flex flex-wrap gap-2.5">
+                {[
+                  "I need a website",
+                  "I want AI solutions",
+                  "I need business automation",
+                  "I need a mobile app",
+                  "Book Consultation"
+                ].map((promptText, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => triggerAIAssistant(promptText)}
+                    className="bg-white/10 hover:bg-[#D4AF37] text-slate-200 hover:text-[#0B1F3A] border border-white/20 hover:border-[#D4AF37] text-xs font-bold px-3.5 py-2 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 shadow-sm group"
+                  >
+                    <Sparkles className="w-3.5 h-3.5 text-[#D4AF37] group-hover:text-[#0B1F3A]" />
+                    <span>"{promptText}"</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="shrink-0 flex flex-col items-center gap-3">
+              <button
+                onClick={() => triggerAIAssistant()}
+                className="bg-gradient-to-r from-[#C29D2F] to-[#F3D97F] hover:from-[#D4AF37] hover:to-[#FFE894] text-[#0B1F3A] font-black text-sm px-8 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all cursor-pointer flex items-center gap-3 transform hover:-translate-y-0.5 active:scale-95"
+              >
+                <Bot className="w-5 h-5" />
+                <span>Chat with KRGONE AI Assistant</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <span className="text-[11px] text-slate-400 font-medium">
+                24/7 Virtual Business Advisor • Instant Consultation
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
