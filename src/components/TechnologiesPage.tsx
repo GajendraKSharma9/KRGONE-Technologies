@@ -32,22 +32,48 @@ export function TechnologiesPage({ onBackToGateway, onNavigateToConsulting }: Te
     serviceNeeded: 'AI Solutions',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent, formType: string = 'Direct Inquiry') => {
     e.preventDefault();
-    setContactFormSubmitted(true);
-    setTimeout(() => {
-      setContactFormSubmitted(false);
-      setIsConsultationModalOpen(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        serviceNeeded: 'AI Solutions',
-        message: ''
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch('/api/technologies/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          formType
+        })
       });
-    }, 4000);
+
+      const result = await response.json();
+      if (result.success) {
+        setContactFormSubmitted(true);
+        setTimeout(() => {
+          setContactFormSubmitted(false);
+          setIsConsultationModalOpen(false);
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            company: '',
+            serviceNeeded: 'AI Solutions',
+            message: ''
+          });
+        }, 5000);
+      } else {
+        setSubmitError(result.error || 'Failed to submit inquiry. Please try again or call us at +91 7300300330.');
+      }
+    } catch (err) {
+      console.error("Form submit error:", err);
+      setSubmitError('Network error. Please try again or email us directly at support.krgone@gmail.com.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToSection = (id: string) => {
@@ -979,10 +1005,16 @@ export function TechnologiesPage({ onBackToGateway, onNavigateToConsulting }: Te
 
               {contactFormSubmitted ? (
                 <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-sm font-bold text-center">
-                  Thank you! Your inquiry has been submitted successfully. Our team will get in touch with you shortly.
+                  Thank you! Your inquiry has been submitted successfully. Confirmation & lead alert dispatched to Support.krgone@gmail.com. Our team will get in touch with you shortly.
                 </div>
               ) : (
-                <form onSubmit={handleFormSubmit} className="space-y-4">
+                <form onSubmit={(e) => handleFormSubmit(e, 'Direct Inquiry')} className="space-y-4">
+                  {submitError && (
+                    <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-700 text-xs font-semibold">
+                      {submitError}
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-bold text-slate-700 mb-1">Your Name *</label>
@@ -1062,10 +1094,20 @@ export function TechnologiesPage({ onBackToGateway, onNavigateToConsulting }: Te
 
                   <button
                     type="submit"
-                    className="w-full bg-[#0B1F3A] hover:bg-[#162D4F] text-white font-extrabold text-xs py-3.5 px-6 rounded-xl transition-all cursor-pointer shadow-md flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full bg-[#0B1F3A] hover:bg-[#162D4F] disabled:opacity-50 text-white font-extrabold text-xs py-3.5 px-6 rounded-xl transition-all cursor-pointer shadow-md flex items-center justify-center gap-2"
                   >
-                    <Send className="w-4 h-4 text-[#D4AF37]" />
-                    <span>Submit Consultation Request</span>
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Sending Notification & Alert...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4 text-[#D4AF37]" />
+                        <span>Submit Consultation Request</span>
+                      </>
+                    )}
                   </button>
                 </form>
               )}
@@ -1168,10 +1210,16 @@ export function TechnologiesPage({ onBackToGateway, onNavigateToConsulting }: Te
 
             {contactFormSubmitted ? (
               <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs font-bold text-center">
-                Thank you! Your consultation request has been received. We will contact you shortly.
+                Thank you! Your consultation request has been received. Confirmation & lead alert dispatched to Support.krgone@gmail.com. We will contact you shortly.
               </div>
             ) : (
-              <form onSubmit={handleFormSubmit} className="space-y-3.5">
+              <form onSubmit={(e) => handleFormSubmit(e, 'Book Free Consultation')} className="space-y-3.5">
+                {submitError && (
+                  <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl text-rose-700 text-xs font-semibold">
+                    {submitError}
+                  </div>
+                )}
+
                 <div>
                   <label className="block text-xs font-bold text-slate-700 mb-1">Full Name *</label>
                   <input 
@@ -1239,10 +1287,20 @@ export function TechnologiesPage({ onBackToGateway, onNavigateToConsulting }: Te
 
                 <button
                   type="submit"
-                  className="w-full bg-[#0B1F3A] hover:bg-[#162D4F] text-white font-extrabold text-xs py-3 px-4 rounded-xl transition-all cursor-pointer shadow-md flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#0B1F3A] hover:bg-[#162D4F] disabled:opacity-50 text-white font-extrabold text-xs py-3 px-4 rounded-xl transition-all cursor-pointer shadow-md flex items-center justify-center gap-2"
                 >
-                  <Calendar className="w-4 h-4 text-[#D4AF37]" />
-                  <span>Confirm Free Consultation Request</span>
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Submitting Request...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Calendar className="w-4 h-4 text-[#D4AF37]" />
+                      <span>Confirm Free Consultation Request</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}
