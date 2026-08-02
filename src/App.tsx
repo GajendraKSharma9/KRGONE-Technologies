@@ -176,36 +176,36 @@ export function App() {
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-[72px] lg:h-[84px]">
+          <div className="flex justify-between items-center h-[72px] lg:h-[80px]">
             {/* Brand / Logo */}
             <div 
-              className="flex flex-col flex-shrink-0 cursor-pointer group py-2 justify-center" 
+              className="flex items-center shrink-0 cursor-pointer group py-2" 
               onClick={(e) => { 
                 e.preventDefault(); 
                 setActiveAppView('LANDING'); 
                 window.scrollTo(0, 0); 
               }}
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 whitespace-nowrap">
                 <span className="text-2xl sm:text-3xl font-black tracking-tight text-white font-sans flex items-center">
                   KRG<span className="text-[#D4AF37]">ONE</span>
                 </span>
-                <span className="text-xs sm:text-sm font-bold tracking-widest text-[#D4AF37] uppercase bg-[#D4AF37]/10 border border-[#D4AF37]/30 px-2.5 py-1 rounded-md">
+                <span className="text-xs sm:text-sm font-bold tracking-widest text-[#D4AF37] uppercase bg-[#D4AF37]/10 border border-[#D4AF37]/30 px-2.5 py-1 rounded-md shrink-0">
                   Consulting
                 </span>
               </div>
             </div>
 
             {/* Right Side: Desktop Navigation & CTA */}
-            <div className="flex items-center gap-3 xl:gap-5">
+            <div className="flex items-center gap-2 xl:gap-4 2xl:gap-6 flex-nowrap">
               {activeAppView !== 'ASSESSMENT_PORTAL' ? (
                 <>
                   {/* Desktop Navigation */}
-                  <div className="hidden xl:flex items-center space-x-3 xl:space-x-4 2xl:space-x-6">
+                  <div className="hidden xl:flex items-center gap-1.5 xl:gap-3 2xl:gap-5 flex-nowrap">
                   {navigationConfig.map((item, idx) => (
                     <div 
                       key={idx} 
-                      className="relative group h-[72px] lg:h-[84px] flex items-center shrink-0"
+                      className="relative group h-[72px] lg:h-[80px] flex items-center shrink-0"
                       onMouseEnter={() => item.dropdown && setActiveDropdown(item.title)}
                       onMouseLeave={() => item.dropdown && setActiveDropdown(null)}
                     >
@@ -227,13 +227,13 @@ export function App() {
                             window.scrollTo(0, 0);
                           }
                         }}
-                        className={`flex items-center gap-1 text-[13px] xl:text-[14px] font-medium tracking-wide transition-colors duration-250 py-2 relative cursor-pointer whitespace-nowrap ${
+                        className={`flex items-center gap-1 text-[13px] 2xl:text-[14px] font-medium tracking-wide transition-colors duration-250 px-2 py-2 relative cursor-pointer whitespace-nowrap ${
                           activeDropdown === item.title || (item.action === "CONTACT_US" && activeAppView === "CONTACT_US") || (item.action === "ABOUT_US" && activeAppView === "ABOUT_US") ? 'text-[#c29d2f]' : 'text-slate-200 hover:text-[#c29d2f]'
                         }`}
                       >
-                        {item.title}
+                        <span className="whitespace-nowrap">{item.title}</span>
                         {item.dropdown && (
-                          <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-250 ${activeDropdown === item.title ? 'rotate-180 text-[#c29d2f]' : 'text-slate-400 group-hover:text-[#c29d2f]'}`} />
+                          <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-250 ${activeDropdown === item.title ? 'rotate-180 text-[#c29d2f]' : 'text-slate-400 group-hover:text-[#c29d2f]'}`} />
                         )}
                         {/* Gold Underline Animation */}
                         <span className={`absolute bottom-0 left-0 h-[2px] bg-[#c29d2f] transition-all duration-300 ${activeDropdown === item.title ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
@@ -248,7 +248,7 @@ export function App() {
                         >
                           <div className="absolute -top-4 left-0 w-full h-4"></div> {/* Hover bridge */}
                           <div className="px-4 py-3 mb-2 border-b border-[#c29d2f]/10">
-                            <span className="text-[#c29d2f] text-[11px] font-bold uppercase tracking-[0.15em]">{item.title}</span>
+                            <span className="text-[#c29d2f] text-[11px] font-bold uppercase tracking-[0.15em] whitespace-nowrap">{item.title}</span>
                           </div>
                           <div className="flex flex-col">
                             {item.dropdown.map((dropItem, dIdx) => (
@@ -295,8 +295,8 @@ export function App() {
                                 }}
                                 className="px-5 py-3.5 text-[14px] text-white hover:text-[#c29d2f] hover:bg-white/5 rounded-xl transition-colors duration-200 flex items-center gap-2 group/drop cursor-pointer"
                               >
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#c29d2f]/0 group-hover/drop:bg-[#c29d2f] transition-colors"></span>
-                                {dropItem}
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#c29d2f]/0 group-hover/drop:bg-[#c29d2f] transition-colors shrink-0"></span>
+                                <span className="whitespace-nowrap">{dropItem}</span>
                               </a>
                             ))}
                           </div>
@@ -307,12 +307,12 @@ export function App() {
                   </div>
 
                   {/* Right CTA */}
-                  <div className="hidden xl:flex items-center shrink-0 bg-gradient-to-b from-[#e5c158] to-[#8a6a12] p-[2px] rounded-full shadow-[0_8px_20px_-4px_rgba(194,157,47,0.5)] hover:shadow-[0_15px_30px_-4px_rgba(194,157,47,0.7)] transition-all duration-300 hover:-translate-y-0.5">
+                  <div className="hidden xl:flex items-center shrink-0 self-center bg-gradient-to-b from-[#e5c158] to-[#8a6a12] p-[2px] rounded-full shadow-[0_8px_20px_-4px_rgba(194,157,47,0.5)] hover:shadow-[0_15px_30px_-4px_rgba(194,157,47,0.7)] transition-all duration-300 hover:-translate-y-0.5">
                     <button 
                       onClick={(e) => { e.preventDefault(); setActiveAppView('ASSESSMENT_PORTAL'); window.scrollTo(0, 0); }}
-                      className="flex items-center justify-center whitespace-nowrap bg-gradient-to-b from-[#f3d97f] via-[#c29d2f] to-[#9c7816] text-[#030816] px-5 xl:px-6 py-2.5 rounded-full font-bold text-[11px] xl:text-[11.5px] tracking-[0.1em] uppercase transition-all duration-300 shadow-[inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-2px_6px_rgba(0,0,0,0.4)] hover:brightness-110 active:shadow-[inset_0_3px_8px_rgba(0,0,0,0.6)] cursor-pointer"
+                      className="flex items-center justify-center whitespace-nowrap shrink-0 bg-gradient-to-b from-[#f3d97f] via-[#c29d2f] to-[#9c7816] text-[#030816] px-4 xl:px-5 2xl:px-6 py-2.5 rounded-full font-bold text-[11px] 2xl:text-[11.5px] tracking-[0.08em] xl:tracking-[0.1em] uppercase transition-all duration-300 shadow-[inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-2px_6px_rgba(0,0,0,0.4)] hover:brightness-110 active:shadow-[inset_0_3px_8px_rgba(0,0,0,0.6)] cursor-pointer"
                     >
-                      Free Business Growth Assessment
+                      <span className="whitespace-nowrap">Free Business Growth Assessment</span>
                     </button>
                   </div>
 
