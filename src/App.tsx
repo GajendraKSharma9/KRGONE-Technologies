@@ -151,9 +151,9 @@ export function App() {
               <Phone className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>+91 7300300330</span>
             </a>
-            <a href="mailto:support.krgone@gmail.com" className="flex items-center gap-1.5 text-slate-300 hover:text-[#D4AF37] transition-colors">
+            <a href="mailto:enquiry.krgone@gmail.com" className="flex items-center gap-1.5 text-slate-300 hover:text-[#D4AF37] transition-colors">
               <Mail className="w-3.5 h-3.5 text-[#D4AF37]" />
-              <span>support.krgone@gmail.com</span>
+              <span>enquiry.krgone@gmail.com</span>
             </a>
             <button 
               onClick={() => { setActiveAppView('GATEWAY'); window.scrollTo(0, 0); }}
