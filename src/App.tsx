@@ -176,7 +176,7 @@ export function App() {
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-[81px] lg:h-[97px]">
+          <div className="flex justify-between items-center h-[72px] lg:h-[84px]">
             {/* Brand / Logo */}
             <div 
               className="flex flex-col flex-shrink-0 cursor-pointer group py-2 justify-center" 
@@ -197,15 +197,15 @@ export function App() {
             </div>
 
             {/* Right Side: Desktop Navigation & CTA */}
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3 xl:gap-5">
               {activeAppView !== 'ASSESSMENT_PORTAL' ? (
                 <>
                   {/* Desktop Navigation */}
-                  <div className="hidden xl:flex items-center space-x-7">
+                  <div className="hidden xl:flex items-center space-x-3 xl:space-x-4 2xl:space-x-6">
                   {navigationConfig.map((item, idx) => (
                     <div 
                       key={idx} 
-                      className="relative group h-[81px] lg:h-[97px] flex items-center"
+                      className="relative group h-[72px] lg:h-[84px] flex items-center shrink-0"
                       onMouseEnter={() => item.dropdown && setActiveDropdown(item.title)}
                       onMouseLeave={() => item.dropdown && setActiveDropdown(null)}
                     >
@@ -227,7 +227,7 @@ export function App() {
                             window.scrollTo(0, 0);
                           }
                         }}
-                        className={`flex items-center gap-1.5 text-[14px] font-medium tracking-wide transition-colors duration-250 py-2 relative cursor-pointer ${
+                        className={`flex items-center gap-1 text-[13px] xl:text-[14px] font-medium tracking-wide transition-colors duration-250 py-2 relative cursor-pointer whitespace-nowrap ${
                           activeDropdown === item.title || (item.action === "CONTACT_US" && activeAppView === "CONTACT_US") || (item.action === "ABOUT_US" && activeAppView === "ABOUT_US") ? 'text-[#c29d2f]' : 'text-slate-200 hover:text-[#c29d2f]'
                         }`}
                       >
@@ -242,7 +242,7 @@ export function App() {
                       {/* Dropdown Menu */}
                       {item.dropdown && (
                         <div 
-                          className={`absolute top-[72px] left-1/2 -translate-x-1/2 w-[280px] bg-[#0A1128] rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.5)] border border-[#c29d2f]/20 p-2 transition-all duration-250 origin-top ${
+                          className={`absolute top-[68px] left-1/2 -translate-x-1/2 w-[280px] bg-[#0A1128] rounded-[16px] shadow-[0_20px_40px_rgba(0,0,0,0.5)] border border-[#c29d2f]/20 p-2 transition-all duration-250 origin-top ${
                             activeDropdown === item.title ? 'opacity-100 translate-y-0 visible scale-100' : 'opacity-0 -translate-y-2 invisible scale-95'
                           }`}
                         >
@@ -307,10 +307,10 @@ export function App() {
                   </div>
 
                   {/* Right CTA */}
-                  <div className="hidden xl:block bg-gradient-to-b from-[#e5c158] to-[#8a6a12] p-[2px] rounded-full shadow-[0_8px_20px_-4px_rgba(194,157,47,0.5)] hover:shadow-[0_15px_30px_-4px_rgba(194,157,47,0.7)] transition-all duration-300 hover:-translate-y-1 translate-y-[25%]">
+                  <div className="hidden xl:flex items-center shrink-0 bg-gradient-to-b from-[#e5c158] to-[#8a6a12] p-[2px] rounded-full shadow-[0_8px_20px_-4px_rgba(194,157,47,0.5)] hover:shadow-[0_15px_30px_-4px_rgba(194,157,47,0.7)] transition-all duration-300 hover:-translate-y-0.5">
                     <button 
                       onClick={(e) => { e.preventDefault(); setActiveAppView('ASSESSMENT_PORTAL'); window.scrollTo(0, 0); }}
-                      className="flex items-center justify-center bg-gradient-to-b from-[#f3d97f] via-[#c29d2f] to-[#9c7816] text-[#030816] px-6 py-2.5 rounded-full font-bold text-[11.5px] tracking-[0.12em] uppercase transition-all duration-300 shadow-[inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-2px_6px_rgba(0,0,0,0.4)] hover:brightness-110 active:shadow-[inset_0_3px_8px_rgba(0,0,0,0.6)]"
+                      className="flex items-center justify-center whitespace-nowrap bg-gradient-to-b from-[#f3d97f] via-[#c29d2f] to-[#9c7816] text-[#030816] px-5 xl:px-6 py-2.5 rounded-full font-bold text-[11px] xl:text-[11.5px] tracking-[0.1em] uppercase transition-all duration-300 shadow-[inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-2px_6px_rgba(0,0,0,0.4)] hover:brightness-110 active:shadow-[inset_0_3px_8px_rgba(0,0,0,0.6)] cursor-pointer"
                     >
                       Free Business Growth Assessment
                     </button>
