@@ -14,6 +14,7 @@ export const SharedFooter: React.FC<SharedFooterProps> = ({ onNavigate }) => {
   return (
     <footer className="bg-[#0f172a] text-slate-400 py-10 border-t border-slate-800 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center space-y-4">
+        
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs sm:text-sm font-medium">
           <a href="#" onClick={(e) => { e.preventDefault(); handleNav('PRIVACY_POLICY'); }} className="hover:text-white transition-colors">Privacy Policy</a>
           <span className="text-slate-700 hidden sm:inline">|</span>

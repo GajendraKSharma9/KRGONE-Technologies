@@ -30,8 +30,8 @@ export function GatewayPage({ onNavigateToConsulting, onNavigateToTechnologies }
       <div className="relative pt-8 pb-4 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#0B1F3A] leading-none mb-3">
           KRGONE
-          <span className="block text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-800 tracking-tight mt-3">
-            Empowering Businesses
+          <span className="block text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#D4AF37] tracking-tight mt-3">
+            Empowering Businesses for Growth
           </span>
         </h1>
 
@@ -161,7 +161,7 @@ export function GatewayPage({ onNavigateToConsulting, onNavigateToTechnologies }
 
                   {/* Focus 5 */}
                   <div className="flex flex-col items-center group/item">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-50/90 border border-amber-300/80 flex items-center justify-center mb-2.5 text-[#D4AF37] shadow-sm group-hover/item:scale-105 group-hover/item:bg-[#D4AF37] group-hover/item:text-slate-900 transition-all">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-100/90 border border-amber-400/80 flex items-center justify-center mb-2.5 text-[#D4AF37] shadow-md group-hover/item:scale-105 group-hover/item:bg-[#D4AF37] group-hover/item:text-slate-900 transition-all animate-pulse-glow">
                       <ClipboardCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#B8860B] group-hover/item:text-slate-900" strokeWidth={2} />
                     </div>
                     <span className="text-[10px] sm:text-[12px] leading-tight sm:leading-snug text-[#0B1F3A] font-extrabold">

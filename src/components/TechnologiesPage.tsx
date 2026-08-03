@@ -4,7 +4,7 @@ import {
   CheckCircle, ArrowRight, ShieldCheck, Zap, Layers, Users, Clock, Mail, 
   Phone, MapPin, ChevronDown, MessageSquare, Database, Code, Sparkles, 
   Send, ArrowLeft, Building2, HeartPulse, GraduationCap, Store, Hotel, 
-  Building, HardHat, Briefcase, Rocket, Factory, Check, X, Calendar
+  Building, HardHat, Briefcase, Rocket, Factory, Check, X, Calendar, ArrowUp
 } from 'lucide-react';
 
 interface TechnologiesPageProps {
@@ -215,20 +215,6 @@ export function TechnologiesPage({ onBackToGateway, onNavigateToConsulting }: Te
         "Cross-Platform Apps (React Native/Flutter)",
         "Internal Business Apps",
         "Customer Experience Apps"
-      ]
-    },
-    {
-      id: "digital-growth",
-      title: "Digital Growth Solutions",
-      category: "growth",
-      icon: TrendingUp,
-      tagline: "Data-driven SEO, ad campaign architecture, and conversion rate optimization.",
-      features: [
-        "Search Engine Optimization (SEO)",
-        "Google Business Profile Growth",
-        "Google & Performance Ads",
-        "Analytics Dashboards",
-        "Conversion Rate Optimization (CRO)"
       ]
     }
   ];
@@ -548,8 +534,7 @@ export function TechnologiesPage({ onBackToGateway, onNavigateToConsulting }: Te
               { id: 'web', label: 'Web & E-Commerce' },
               { id: 'ai', label: 'AI Solutions' },
               { id: 'automation', label: 'Automation' },
-              { id: 'apps', label: 'Custom Apps' },
-              { id: 'growth', label: 'Digital Growth' }
+              { id: 'apps', label: 'Custom Apps' }
             ].map(tab => (
               <button
                 key={tab.id}

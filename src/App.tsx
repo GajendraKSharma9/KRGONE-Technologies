@@ -32,6 +32,7 @@ import { BusinessGrowthSprintPage } from "./components/BusinessGrowthSprintPage"
 import { FractionalSalesHeadPage } from "./components/FractionalSalesHeadPage";
 import { GatewayPage } from "./components/GatewayPage";
 import { TechnologiesPage } from "./components/TechnologiesPage";
+import { ScrollToTopButton } from "./components/ScrollToTopButton";
 
 const navigationConfig = [
   { title: "Home", href: "#", action: "LANDING", dropdown: null },
@@ -121,15 +122,23 @@ export function App() {
   }, []);
 
   if (activeAppView === 'GATEWAY') {
-    return <GatewayPage onNavigateToConsulting={() => { setActiveAppView('LANDING'); window.scrollTo(0, 0); }} onNavigateToTechnologies={() => { setActiveAppView('TECHNOLOGIES_LANDING'); window.scrollTo(0, 0); }} />;
+    return (
+      <>
+        <GatewayPage onNavigateToConsulting={() => { setActiveAppView('LANDING'); window.scrollTo(0, 0); }} onNavigateToTechnologies={() => { setActiveAppView('TECHNOLOGIES_LANDING'); window.scrollTo(0, 0); }} />
+        <ScrollToTopButton />
+      </>
+    );
   }
 
   if (activeAppView === 'TECHNOLOGIES_LANDING') {
     return (
-      <TechnologiesPage 
-        onBackToGateway={() => { setActiveAppView('GATEWAY'); window.scrollTo(0, 0); }} 
-        onNavigateToConsulting={() => { setActiveAppView('LANDING'); window.scrollTo(0, 0); }}
-      />
+      <>
+        <TechnologiesPage 
+          onBackToGateway={() => { setActiveAppView('GATEWAY'); window.scrollTo(0, 0); }} 
+          onNavigateToConsulting={() => { setActiveAppView('LANDING'); window.scrollTo(0, 0); }}
+        />
+        <ScrollToTopButton />
+      </>
     );
   }
 
@@ -307,7 +316,7 @@ export function App() {
                   </div>
 
                   {/* Right CTA */}
-                  <div className="hidden xl:flex items-center shrink-0 self-center bg-gradient-to-b from-[#e5c158] to-[#8a6a12] p-[2px] rounded-full shadow-[0_8px_20px_-4px_rgba(194,157,47,0.5)] hover:shadow-[0_15px_30px_-4px_rgba(194,157,47,0.7)] transition-all duration-300 hover:-translate-y-0.5">
+                  <div className="hidden xl:flex items-center shrink-0 self-center bg-gradient-to-b from-[#e5c158] to-[#8a6a12] p-[2px] rounded-full shadow-[0_8px_20px_-4px_rgba(194,157,47,0.5)] hover:shadow-[0_15px_30px_-4px_rgba(194,157,47,0.7)] transition-all duration-300 hover:-translate-y-0.5 animate-pulse-glow">
                     <button 
                       onClick={(e) => { e.preventDefault(); setActiveAppView('ASSESSMENT_PORTAL'); window.scrollTo(0, 0); }}
                       className="flex items-center justify-center whitespace-nowrap shrink-0 bg-gradient-to-b from-[#f3d97f] via-[#c29d2f] to-[#9c7816] text-[#030816] px-4 xl:px-5 2xl:px-6 py-2.5 rounded-full font-bold text-[11px] 2xl:text-[11.5px] tracking-[0.08em] xl:tracking-[0.1em] uppercase transition-all duration-300 shadow-[inset_0_2px_4px_rgba(255,255,255,0.7),inset_0_-2px_6px_rgba(0,0,0,0.4)] hover:brightness-110 active:shadow-[inset_0_3px_8px_rgba(0,0,0,0.6)] cursor-pointer"
@@ -487,7 +496,7 @@ export function App() {
                 <button 
                   aria-label="Start Free Business Growth Assessment"
                   onClick={(e) => { e.preventDefault(); setActiveAppView('ASSESSMENT_PORTAL'); window.scrollTo(0, 0); }} 
-                  className="bg-gradient-to-r from-[#d4af37] to-[#e5c158] hover:from-[#c29d2f] hover:to-[#d4af37] text-white font-semibold py-3.5 px-6 rounded-lg flex items-center gap-2 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 text-sm lg:text-base"
+                  className="bg-gradient-to-r from-[#d4af37] to-[#e5c158] hover:from-[#c29d2f] hover:to-[#d4af37] text-white font-semibold py-3.5 px-6 rounded-lg flex items-center gap-2 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 active:scale-95 text-sm lg:text-base animate-pulse-glow"
                 >
                   Free Business Growth Assessment <ArrowRight className="w-4 h-4" />
                 </button>
@@ -2259,6 +2268,7 @@ export function App() {
       ) : (
         <AssessmentEngine onReturnHome={() => { setActiveAppView('LANDING'); window.scrollTo(0, 0); }} />
       )}
+      <ScrollToTopButton />
     </div>
   );
 }
