@@ -4,4 +4,4 @@ Disallow: /api/
 Disallow: /dist/
 Disallow: /node_modules/
 
-Sitemap: https://krgone.com/sitemap.xml
+Sitemap: https://krgone.vercel.app/sitemap.xml

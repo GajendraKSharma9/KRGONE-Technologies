@@ -121,6 +121,175 @@ export function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const seoMap: Record<string, { title: string; desc: string; path: string; keywords?: string }> = {
+      GATEWAY: {
+        title: "KRGONE | Enterprise Advisory & Technology Transformation Platform Jaipur",
+        desc: "KRGONE Group connects Enterprise Management Consulting and Custom Technology Engineering. Founded by Gajendra Kumar Sharma in Jaipur, Rajasthan.",
+        path: "/",
+        keywords: "KRGONE, Business Consultant Jaipur, Enterprise Advisory, Custom Technology Engineering, Gajendra Kumar Sharma, Business Growth"
+      },
+      TECHNOLOGIES_LANDING: {
+        title: "KRGONE Technologies | Custom Software, Web Development & AI Solutions Jaipur",
+        desc: "KRGONE Technologies builds high-performance custom business applications, AI solutions, web development, and digital automation systems in Jaipur, India.",
+        path: "/technologies",
+        keywords: "KRGONE Technologies, Custom Software Jaipur, Web Development Jaipur, AI Solutions Jaipur, Business Automation, Custom Business Applications"
+      },
+      LANDING: {
+        title: "KRGONE | Top Business Consultant & Growth Advisor Jaipur | Revenue Scaling",
+        desc: "Top Business Growth Consultant in Jaipur. KRGONE provides 35-point business growth diagnostic scans, SOP automation, and revenue scaling strategies.",
+        path: "/business-consulting",
+        keywords: "Business Consultant Jaipur, Business Growth Consultant Jaipur, Business Management Consultant Jaipur, Revenue Growth Consultant, Sales Consultant Jaipur, MSME Consultant"
+      },
+      ASSESSMENT_PORTAL: {
+        title: "KRGONE Business Growth Assessment™ | Free 35-Point Diagnostic Scan",
+        desc: "Take the free 35-point KRGONE Business Growth Assessment™. Evaluate Leadership, Sales, Operations, Finance & Tech to receive your custom 90-day growth roadmap.",
+        path: "/business-growth-assessment",
+        keywords: "Business Growth Assessment, Business Diagnostic, Free Business Audit, Business Health Score, MSME Growth Audit"
+      },
+      BUSINESS_GROWTH_CONSULTATION: {
+        title: "Business Growth Consultation™ | KRGONE Enterprise Advisory Jaipur",
+        desc: "Book a 1-on-1 Business Growth Consultation with KRGONE Jaipur. Uncover revenue bottlenecks, operational gaps, and strategic scaling opportunities.",
+        path: "/book-growth-diagnostic",
+        keywords: "Business Growth Consultation, Book Growth Diagnostic, Business Strategy Call, Jaipur Business Advisor"
+      },
+      FULL_BUSINESS_DIAGNOSTIC: {
+        title: "Full Business Growth Diagnostic™ | Deep Systems Audit | KRGONE",
+        desc: "Comprehensive 360-degree business audit covering 7 core growth pillars for MSMEs and enterprises in India by KRGONE.",
+        path: "/full-business-diagnostic",
+        keywords: "Full Business Diagnostic, Business Systems Audit, SOP Audit, Revenue Bottleneck Scan"
+      },
+      BUSINESS_GROWTH_SPRINT: {
+        title: "90-Day Business Growth Sprint™ | Execution Roadmap | KRGONE",
+        desc: "Accelerate revenue growth and operational discipline with KRGONE's 90-Day Business Growth Sprint™. Hands-on execution and KPI tracking.",
+        path: "/growth-sprint",
+        keywords: "90-Day Growth Sprint, Revenue Scaling Sprint, Business Execution Roadmap, Sales Acceleration"
+      },
+      FRACTIONAL_SALES_HEAD: {
+        title: "Fractional Sales Head™ Jaipur | Executive Sales Advisory | KRGONE",
+        desc: "Hire a Fractional Sales Head in Jaipur. KRGONE builds high-converting B2B/B2C sales pipelines, sales automation, and high-performance teams.",
+        path: "/fractional-sales-head",
+        keywords: "Fractional Sales Head, Sales Consultant Jaipur, B2B Sales Advisory, Sales Pipeline Engineering"
+      },
+      ABOUT_US: {
+        title: "About KRGONE | Premier Management Consulting & Business Advisory Jaipur",
+        desc: "Learn about KRGONE's mission to empower Indian MSMEs with world-class management consulting, business intelligence, and revenue expansion strategies.",
+        path: "/about",
+        keywords: "About KRGONE, Management Consulting Jaipur, Business Advisory India, Gajendra Kumar Sharma"
+      },
+      MEET_FOUNDER: {
+        title: "Meet Gajendra Kumar Sharma | Founder & Managing Director, KRGONE",
+        desc: "Meet Gajendra Kumar Sharma, Founder & Principal Business Growth Advisor at KRGONE. Empowering business leaders across Jaipur and India.",
+        path: "/meet-the-founder",
+        keywords: "Gajendra Kumar Sharma, KRGONE Founder, Business Consultant Jaipur, Revenue Growth Expert"
+      },
+      CONTACT_US: {
+        title: "Contact KRGONE | Business Consulting Advisory Jaipur | +91 7300300330",
+        desc: "Get in touch with KRGONE Management Consulting in Jaipur, Rajasthan. Email enquiry.krgone@gmail.com or call +91 7300300330 for business growth inquiries.",
+        path: "/contact",
+        keywords: "Contact KRGONE, Business Consultant Phone Number, Jaipur Advisory Office, enquiry.krgone@gmail.com"
+      },
+      OUR_METHODOLOGY: {
+        title: "Our Methodology | KRGONE Growth OS™ & Diagnostic Framework",
+        desc: "Explore KRGONE's proven methodology combining data-driven diagnostic scans, 7 growth pillars, and 90-day execution sprints.",
+        path: "/methodology",
+        keywords: "KRGONE Methodology, Business Diagnostic Framework, 7 Pillars Framework"
+      },
+      GROWTH_OS_OVERVIEW: {
+        title: "KRGONE Growth OS™ | Integrated Business Architecture Platform",
+        desc: "Discover KRGONE Growth OS™ - the proprietary operating system for business growth, process engineering, and revenue expansion.",
+        path: "/growth-os",
+        keywords: "Growth OS, Business Architecture, Process Engineering"
+      },
+      SEVEN_PILLARS: {
+        title: "The 7 Core Growth Pillars | KRGONE Business Diagnostic Framework",
+        desc: "Master the 7 Core Growth Pillars: Leadership, Marketing, Sales, Operations, Finance, Tech, and Talent with KRGONE Consulting.",
+        path: "/seven-growth-pillars",
+        keywords: "7 Growth Pillars, Business Diagnostic Pillars, Operations, Finance, Marketing, Sales"
+      },
+      BUSINESS_HEALTH_DASHBOARD: {
+        title: "Business Health Dashboard™ | Real-Time Growth Metrics | KRGONE",
+        desc: "Monitor and optimize business health metrics across 7 critical operational pillars with KRGONE's Business Health Dashboard™.",
+        path: "/business-health-dashboard",
+        keywords: "Business Health Dashboard, Growth Metrics, KPI Tracker"
+      },
+      EXECUTIVE_INSIGHTS: {
+        title: "Executive Business Insights™ | Strategic Growth Intelligence | KRGONE",
+        desc: "Data-driven executive business insights and AI-powered strategy recommendations for business owners and CEOs.",
+        path: "/executive-insights",
+        keywords: "Executive Insights, Business Intelligence, Strategic Advisory"
+      },
+      PRIVACY_POLICY: {
+        title: "Privacy Policy | KRGONE Management Consulting",
+        desc: "Read the official Privacy Policy of KRGONE. We are committed to protecting executive data and business diagnostic information.",
+        path: "/privacy-policy"
+      },
+      TERMS_AND_CONDITIONS: {
+        title: "Terms and Conditions | KRGONE Advisory Services",
+        desc: "Terms and conditions governing the use of KRGONE website, business assessment tools, and management consulting services.",
+        path: "/terms-and-conditions"
+      },
+      DISCLAIMER: {
+        title: "Disclaimer | KRGONE Business Growth Platform",
+        desc: "Official disclaimer regarding business assessment results, advisory reports, and consulting outcomes from KRGONE.",
+        path: "/disclaimer"
+      },
+      REFUND_POLICY: {
+        title: "Refund Policy | KRGONE Advisory Services",
+        desc: "Official refund and cancellation policy for KRGONE management consulting and diagnostic packages.",
+        path: "/refund-policy"
+      },
+      COOKIE_POLICY: {
+        title: "Cookie Policy | KRGONE Management Consulting",
+        desc: "Cookie policy detailing how KRGONE uses essential cookies to enhance user experience and site security.",
+        path: "/cookie-policy"
+      }
+    };
+
+    const currentSeo = seoMap[activeAppView] || seoMap.GATEWAY;
+    const fullUrl = `https://krgone.vercel.app${currentSeo.path}`;
+
+    document.title = currentSeo.title;
+
+    const updateMeta = (selector: string, attr: string, value: string) => {
+      let elem = document.querySelector(selector);
+      if (!elem) {
+        elem = document.createElement('meta');
+        if (selector.includes('name=')) {
+          const nameMatch = selector.match(/name="([^"]+)"/);
+          if (nameMatch) elem.setAttribute('name', nameMatch[1]);
+        } else if (selector.includes('property=')) {
+          const propMatch = selector.match(/property="([^"]+)"/);
+          if (propMatch) elem.setAttribute('property', propMatch[1]);
+        }
+        document.head.appendChild(elem);
+      }
+      elem.setAttribute(attr, value);
+    };
+
+    updateMeta('meta[name="description"]', 'content', currentSeo.desc);
+    if (currentSeo.keywords) {
+      updateMeta('meta[name="keywords"]', 'content', currentSeo.keywords);
+    }
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', fullUrl);
+
+    updateMeta('meta[property="og:title"]', 'content', currentSeo.title);
+    updateMeta('meta[property="og:description"]', 'content', currentSeo.desc);
+    updateMeta('meta[property="og:url"]', 'content', fullUrl);
+
+    updateMeta('meta[name="twitter:title"]', 'content', currentSeo.title);
+    updateMeta('meta[name="twitter:description"]', 'content', currentSeo.desc);
+    updateMeta('meta[name="twitter:url"]', 'content', fullUrl);
+
+  }, [activeAppView]);
+
   if (activeAppView === 'GATEWAY') {
     return (
       <>
